@@ -1,0 +1,61 @@
+﻿@model IEnumerable<GestionReservation.Data.Client>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Liste des Clients</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table shadow-lg">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotDePasse)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InformationsPaiement)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prenom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MotDePasse)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InformationsPaiement)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdClient" class="btn btn-primary">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdClient" class="btn btn-success">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdClient" class="btn btn-danger">Delete</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

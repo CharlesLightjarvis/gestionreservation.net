@@ -1,0 +1,51 @@
+﻿@model GestionReservation.Data.Tarif
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Tarif</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdTarif" />
+            <div class="form-group">
+                <label asp-for="IdVol" class="control-label"></label>
+                <select asp-for="IdVol" class="form-control" asp-items="@(new SelectList(ViewBag.Vols, "IdVol", "NumeroVol"))">
+                    <option value="">-- Choisir Vol -- </option>
+                </select>                
+                <span asp-validation-for="IdVol" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Classe" class="control-label"></label>
+                <input asp-for="Classe" class="form-control" />
+                <span asp-validation-for="Classe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PrixBase" class="control-label"></label>
+                <input asp-for="PrixBase" class="form-control" />
+                <span asp-validation-for="PrixBase" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolitiqueAnnulation" class="control-label"></label>
+                <input asp-for="PolitiqueAnnulation" class="form-control" />
+                <span asp-validation-for="PolitiqueAnnulation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
